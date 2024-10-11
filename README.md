@@ -1,2 +1,0 @@
-Functional RTS Game
-A fully functional Real-Time Strategy (RTS) game built using HTML, CSS, and JavaScript. This game allows you to control units, engage in combat with enemy units, and manage resources—all without the use of external assets or sounds.
