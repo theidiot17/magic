@@ -2,11 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Simple RTS Game</title>
+  <title>Functional RTS Game</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+  <!-- UI Elements -->
+  <div id="ui">
+    <div id="resources">
+      Gold: <span id="goldCount">0</span>
+    </div>
+    <button id="createUnitBtn">Create Unit (Cost: 50 Gold)</button>
+  </div>
 
   <script src="script.js"></script>
 </body>
