@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔤 Secret Language Translator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>🔤 Secret Language Translator</h1>
+        <nav>
+            <a href="../index.html">← Back to Hub</a>
+        </nav>
+    </header>
+    <main>
+        <div class="translator-container">
+            <div class="translator-section">
+                <label for="englishInput">English:</label>
+                <textarea id="englishInput" placeholder="Type in English..." oninput="translateToSecret()"></textarea>
+            </div>
+            <div class="translator-section">
+                <label for="secretInput">Secret Language:</label>
+                <textarea id="secretInput" placeholder="Type in Secret Language..." oninput="translateToEnglish()"></textarea>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Jett</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

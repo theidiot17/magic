@@ -17,13 +17,13 @@ document.getElementById('quizForm').addEventListener('submit', function(e) {
     // Determine result based on percentage
     let resultText = '';
     if (percentage >= 80) {
-        resultText = `🎉 Excellent! Your Health and Wellness score is ${percentage}%. Keep up the great work!`;
+        resultText = `🎉 Fantastic! Your Health and Wellness score is ${percentage}%. You're basically a superhero!`;
     } else if (percentage >= 60) {
-        resultText = `🙂 Good job! Your Health and Wellness score is ${percentage}%. There's room for improvement.`;
+        resultText = `🙂 Good job! Your Health and Wellness score is ${percentage}%. Keep striving for greatness!`;
     } else if (percentage >= 40) {
-        resultText = `😐 Fair progress. Your Health and Wellness score is ${percentage}%. Consider making some positive changes.`;
+        resultText = `😐 Not bad. Your Health and Wellness score is ${percentage}%. Maybe add a little more fun to your routine!`;
     } else {
-        resultText = `😟 Your Health and Wellness score is ${percentage}%. It's important to consult with a healthcare professional for personalized advice.`;
+        resultText = `😟 Uh-oh! Your Health and Wellness score is ${percentage}%. Time to channel your inner ninja and make some changes!`;
     }
 
     // Display the result

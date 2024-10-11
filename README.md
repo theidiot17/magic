@@ -4,7 +4,8 @@ Welcome to the Magic Projects Hub! This repository showcases a collection of int
 
 ## Projects
 
-- **🩺 [Health Assessment](health-assessment/index.html):** An interactive quiz to evaluate your health and wellness habits and receive personalized tips.
+- **🩺 [Health Assessment](health-assessment/index.html):** A fun quiz to evaluate your wellness habits and get humorous insights!
+- **🔤 [Secret Language Translator](secret-language-translator/index.html):** Translate between English and our secret language in real-time with emojis!
 - **🚀 [Another Project](another-project/index.html):** A brief description of another awesome project.
 
 <!-- Add more projects as they are developed -->
