@@ -17,7 +17,6 @@ header, footer {
     background-color: #1f1f1f;
     padding: 1.5rem 1rem;
     text-align: center;
-    position: relative;
 }
 
 header h1, footer p {
@@ -49,6 +48,7 @@ a:hover {
     border-radius: 10px;
     width: 220px;
     text-align: center;
+    padding: 1rem;
     box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -58,28 +58,77 @@ a:hover {
     box-shadow: 0 8px 16px rgba(0,0,0,0.5);
 }
 
-.project img {
-    width: 100%;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    height: 140px;
-    object-fit: cover;
-}
-
 .project h2 {
-    padding: 1rem 0.5rem;
+    margin-top: 0.5rem;
     font-size: 1.2rem;
     color: #ffffff;
 }
 
-footer {
-    background-color: #1f1f1f;
-    color: #e0e0e0;
-    text-align: center;
+.project p {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #b0b0b0;
+}
+
+/* Quiz Container Styles */
+.quiz-container {
+    max-width: 700px;
+    margin: 2rem auto;
+    background-color: #1e1e1e;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    animation: fadeIn 1s ease-in-out;
+}
+
+.quiz-question {
+    margin-bottom: 1.5rem;
+}
+
+.quiz-options {
+    list-style-type: none;
+    padding: 0;
+}
+
+.quiz-options li {
+    margin-bottom: 0.75rem;
+}
+
+.quiz-options label {
+    cursor: pointer;
+}
+
+.quiz-options input {
+    margin-right: 0.5rem;
+}
+
+.submit-btn {
+    padding: 0.75rem 1.5rem;
+    background-color: #bb86fc;
+    color: #1e1e1e;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #3700b3;
+}
+
+.result {
+    display: none;
+    margin-top: 1.5rem;
     padding: 1rem;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+    background-color: #333333;
+    border-left: 5px solid #bb86fc;
+    border-radius: 5px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 /* Responsive Design */

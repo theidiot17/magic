@@ -4,7 +4,8 @@ Welcome to the Magic Projects Hub! This repository showcases a collection of int
 
 ## Projects
 
-- **[Health Assessment](health-assessment/index.html):** An interactive quiz to assess your health and wellness habits. *Note: This is a general assessment tool. For accurate health advice, consult a professional.*
+- **🩺 [Health Assessment](health-assessment/index.html):** An interactive quiz to evaluate your health and wellness habits and receive personalized tips.
+- **🚀 [Another Project](another-project/index.html):** A brief description of another awesome project.
 
 <!-- Add more projects as they are developed -->
 
@@ -15,7 +16,7 @@ To view the projects locally:
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/your-username/magic.git
+    git clone https://github.com/theidiot17/magic.git
     ```
 
 2. **Navigate to the project directory:**
@@ -31,7 +32,7 @@ To view the projects locally:
 This project is hosted using [GitHub Pages](https://pages.github.com/). To deploy:
 
 1. **Push your changes to the `main` branch.**
-2. **GitHub Pages will automatically build and deploy your site.** Visit `https://your-username.github.io/magic/` to view it.
+2. **GitHub Pages will automatically build and deploy your site.** Visit `https://theidiot17.github.io/magic/` to view it.
 
 ## License
 
