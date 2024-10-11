@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health and Wellness Assessment</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Health and Wellness Assessment</h1>
+        <nav>
+            <a href="../index.html">← Back to Hub</a>
+        </nav>
+    </header>
+    <main>
+        <div class="quiz-container">
+            <form id="quizForm">
+                <!-- Question 1 -->
+                <div class="quiz-question">
+                    <p>1. How often do you exercise?</p>
+                    <ul class="quiz-options">
+                        <li><label><input type="radio" name="q1" value="5"> Daily</label></li>
+                        <li><label><input type="radio" name="q1" value="4"> Several times a week</label></li>
+                        <li><label><input type="radio" name="q1" value="3"> Once a week</label></li>
+                        <li><label><input type="radio" name="q1" value="2"> A few times a month</label></li>
+                        <li><label><input type="radio" name="q1" value="1"> Rarely or never</label></li>
+                    </ul>
+                </div>
+                
+                <!-- Question 2 -->
+                <div class="quiz-question">
+                    <p>2. How would you rate your diet?</p>
+                    <ul class="quiz-options">
+                        <li><label><input type="radio" name="q2" value="5"> Very Healthy</label></li>
+                        <li><label><input type="radio" name="q2" value="4"> Mostly Healthy</label></li>
+                        <li><label><input type="radio" name="q2" value="3"> Moderately Healthy</label></li>
+                        <li><label><input type="radio" name="q2" value="2"> Slightly Healthy</label></li>
+                        <li><label><input type="radio" name="q2" value="1"> Unhealthy</label></li>
+                    </ul>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="quiz-question">
+                    <p>3. How many hours of sleep do you get on average per night?</p>
+                    <ul class="quiz-options">
+                        <li><label><input type="radio" name="q3" value="5"> 8 or more hours</label></li>
+                        <li><label><input type="radio" name="q3" value="4"> 7-8 hours</label></li>
+                        <li><label><input type="radio" name="q3" value="3"> 6-7 hours</label></li>
+                        <li><label><input type="radio" name="q3" value="2"> 5-6 hours</label></li>
+                        <li><label><input type="radio" name="q3" value="1"> Less than 5 hours</label></li>
+                    </ul>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="quiz-question">
+                    <p>4. How would you describe your stress levels?</p>
+                    <ul class="quiz-options">
+                        <li><label><input type="radio" name="q4" value="5"> Very Low</label></li>
+                        <li><label><input type="radio" name="q4" value="4"> Low</label></li>
+                        <li><label><input type="radio" name="q4" value="3"> Moderate</label></li>
+                        <li><label><input type="radio" name="q4" value="2"> High</label></li>
+                        <li><label><input type="radio" name="q4" value="1"> Very High</label></li>
+                    </ul>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="quiz-question">
+                    <p>5. How frequently do you engage in social activities or hobbies?</p>
+                    <ul class="quiz-options">
+                        <li><label><input type="radio" name="q5" value="5"> Daily</label></li>
+                        <li><label><input type="radio" name="q5" value="4"> Several times a week</label></li>
+                        <li><label><input type="radio" name="q5" value="3"> Once a week</label></li>
+                        <li><label><input type="radio" name="q5" value="2"> A few times a month</label></li>
+                        <li><label><input type="radio" name="q5" value="1"> Rarely or never</label></li>
+                    </ul>
+                </div>
+
+                <!-- Add more questions as needed -->
+
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+            <div id="result" class="result"></div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Your Name</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
