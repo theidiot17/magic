@@ -33,7 +33,7 @@
       padding: 2rem;
       border-radius: 15px;
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-      max-width: 500px;
+      max-width: 600px;
       width: 100%;
       text-align: center;
       animation: popIn 0.5s ease-out;
@@ -210,6 +210,16 @@
         <option value="Steak">Steak</option>
         <option value="Donuts">Donuts</option>
         <option value="Chocolate">Chocolate</option>
+        <option value="Cheez-Its">Cheez-Its</option>
+        <option value="Hot Dogs">Hot Dogs</option>
+        <option value="French Fries">French Fries</option>
+        <option value="Nachos">Nachos</option>
+        <option value="Fried Chicken">Fried Chicken</option>
+        <option value="Mac & Cheese">Mac & Cheese</option>
+        <option value="Cupcakes">Cupcakes</option>
+        <option value="BBQ Ribs">BBQ Ribs</option>
+        <option value="Pretzels">Pretzels</option>
+        <option value="Cookies">Cookies</option>
         <!-- Add more foods as desired -->
       </select>
     </div>
@@ -229,7 +239,17 @@
       "Salad": 152,
       "Steak": 679,
       "Donuts": 195,
-      "Chocolate": 208
+      "Chocolate": 208,
+      "Cheez-Its": 160,
+      "Hot Dogs": 290,
+      "French Fries": 312,
+      "Nachos": 350,
+      "Fried Chicken": 400,
+      "Mac & Cheese": 300,
+      "Cupcakes": 250,
+      "BBQ Ribs": 500,
+      "Pretzels": 108,
+      "Cookies": 160
       // Add more foods with their average calories per serving
     };
 
@@ -267,6 +287,10 @@
       return BMR * factor;
     }
 
+    function pluralize(word, count) {
+      return count === 1 ? word : word + 's';
+    }
+
     function calculate() {
       const weight = parseFloat(document.getElementById('weight').value);
       const heightFt = parseFloat(document.getElementById('height-ft').value);
@@ -301,14 +325,17 @@
       // Calculate number of servings needed to reach lethal calories
       const totalServings = Math.ceil(lethalCalories / caloriesPerServing);
 
+      // Handle pluralization
+      const foodWord = pluralize(food, totalServings);
+
       // Humorous messages based on servings
       let message;
       if (totalServings < 10) {
-        message = `Wow! Just ${totalServings} servings of ${food}? You're unstoppable! 😲`;
+        message = `Wow! Just ${totalServings} ${foodWord}? You're unstoppable! 😲`;
       } else if (totalServings < 50) {
-        message = `That's ${totalServings} servings of ${food}! Are you sure you're up for this? 😅`;
+        message = `That's ${totalServings} ${foodWord}! Are you sure you're up for this? 😅`;
       } else {
-        message = `You need to eat ${totalServings} servings of ${food} to end you! 🤯`;
+        message = `You need to eat ${totalServings} ${foodWord} to end you! 🤯`;
       }
 
       document.getElementById('result').innerText = message;
