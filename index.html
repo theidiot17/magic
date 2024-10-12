@@ -19,7 +19,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
       animation: backgroundFade 2s ease-in-out;
     }
 
@@ -33,7 +33,7 @@
       padding: 2rem;
       border-radius: 15px;
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-      max-width: 400px;
+      max-width: 500px;
       width: 100%;
       text-align: center;
       animation: popIn 0.5s ease-out;
@@ -93,6 +93,15 @@
       flex: 1;
     }
 
+    .gender-activity-group {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .gender-activity-group select {
+      flex: 1;
+    }
+
     button {
       padding: 0.75rem 1.5rem;
       border: none;
@@ -131,13 +140,17 @@
     }
 
     /* Responsive Design */
-    @media (max-width: 500px) {
+    @media (max-width: 600px) {
       .container {
         padding: 1.5rem;
       }
 
       h1 {
         font-size: 1.5rem;
+      }
+
+      .height-group, .gender-activity-group {
+        flex-direction: column;
       }
     }
   </style>
@@ -161,6 +174,28 @@
       <label for="age">Your Age:</label>
       <input type="number" id="age" placeholder="e.g., 25">
     </div>
+    <div class="input-group gender-activity-group">
+      <div>
+        <label for="gender">Your Gender:</label>
+        <select id="gender">
+          <option value="">-- Select Gender --</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div>
+        <label for="activity">Activity Level:</label>
+        <select id="activity">
+          <option value="">-- Select Activity --</option>
+          <option value="sedentary">Sedentary</option>
+          <option value="light">Lightly Active</option>
+          <option value="moderate">Moderately Active</option>
+          <option value="active">Very Active</option>
+          <option value="extra">Extra Active</option>
+        </select>
+      </div>
+    </div>
     <div class="input-group">
       <label for="food">Favorite Food:</label>
       <select id="food">
@@ -183,27 +218,100 @@
   </div>
 
   <script>
+    // Food caloric values (average calories per serving)
+    const foodCalories = {
+      "Pizza": 285,
+      "Burger": 354,
+      "Sushi": 200,
+      "Ice Cream": 207,
+      "Tacos": 226,
+      "Pasta": 221,
+      "Salad": 152,
+      "Steak": 679,
+      "Donuts": 195,
+      "Chocolate": 208
+      // Add more foods with their average calories per serving
+    };
+
+    // Activity factors
+    const activityFactors = {
+      "sedentary": 1.2,
+      "light": 1.375,
+      "moderate": 1.55,
+      "active": 1.725,
+      "extra": 1.9
+    };
+
+    function calculateBMR(weight, heightIn, age, gender) {
+      // Convert weight from pounds to kilograms and height from inches to centimeters
+      const weightKg = weight * 0.453592;
+      const heightCm = heightIn * 2.54;
+
+      let BMR;
+      if (gender === "male") {
+        BMR = 88.362 + (13.397 * weightKg) + (4.799 * heightCm) - (5.677 * age);
+      } else if (gender === "female") {
+        BMR = 447.593 + (9.247 * weightKg) + (3.098 * heightCm) - (4.330 * age);
+      } else { // Other or unspecified
+        // Average of male and female BMR
+        const maleBMR = 88.362 + (13.397 * weightKg) + (4.799 * heightCm) - (5.677 * age);
+        const femaleBMR = 447.593 + (9.247 * weightKg) + (3.098 * heightCm) - (4.330 * age);
+        BMR = (maleBMR + femaleBMR) / 2;
+      }
+      return BMR;
+    }
+
+    function calculateDailyCalories(BMR, activityLevel) {
+      const factor = activityFactors[activityLevel];
+      if (!factor) return BMR;
+      return BMR * factor;
+    }
+
     function calculate() {
       const weight = parseFloat(document.getElementById('weight').value);
       const heightFt = parseFloat(document.getElementById('height-ft').value);
       const heightIn = parseFloat(document.getElementById('height-in').value);
       const age = parseInt(document.getElementById('age').value);
+      const gender = document.getElementById('gender').value;
+      const activity = document.getElementById('activity').value;
       const food = document.getElementById('food').value;
 
-      if (isNaN(weight) || isNaN(heightFt) || isNaN(heightIn) || isNaN(age) || food === "") {
+      // Input Validation
+      if (isNaN(weight) || isNaN(heightFt) || isNaN(heightIn) || isNaN(age) || gender === "" || activity === "" || food === "") {
         document.getElementById('result').innerText = "Please fill in all fields correctly.";
         return;
       }
 
-      // Convert height to inches for calculation
+      // Convert height to total inches
       const totalHeightIn = (heightFt * 12) + heightIn;
 
-      // Humorous calculation formula
-      const baseAmount = (weight * totalHeightIn) / age;
-      const randomFactor = Math.floor(Math.random() * 1000) + 100; // Random number between 100 and 1100
-      const total = Math.floor(baseAmount * randomFactor / 1000);
+      // Calculate BMR
+      const BMR = calculateBMR(weight, totalHeightIn, age, gender);
 
-      document.getElementById('result').innerText = `You need to eat ${total} servings of ${food} to end you! 🤯`;
+      // Calculate Daily Caloric Needs
+      const dailyCalories = calculateDailyCalories(BMR, activity);
+
+      // Define a hypothetical lethal caloric intake (for fun)
+      // This is purely arbitrary and not based on real medical data
+      const lethalCalories = 10 * dailyCalories; // 10 days worth of calories
+
+      // Get calories per serving of the selected food
+      const caloriesPerServing = foodCalories[food] || 200; // default to 200 if not found
+
+      // Calculate number of servings needed to reach lethal calories
+      const totalServings = Math.ceil(lethalCalories / caloriesPerServing);
+
+      // Humorous messages based on servings
+      let message;
+      if (totalServings < 10) {
+        message = `Wow! Just ${totalServings} servings of ${food}? You're unstoppable! 😲`;
+      } else if (totalServings < 50) {
+        message = `That's ${totalServings} servings of ${food}! Are you sure you're up for this? 😅`;
+      } else {
+        message = `You need to eat ${totalServings} servings of ${food} to end you! 🤯`;
+      }
+
+      document.getElementById('result').innerText = message;
     }
   </script>
 
