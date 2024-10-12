@@ -68,7 +68,7 @@
       color: #cccccc;
     }
 
-    input {
+    input, select {
       width: 100%;
       padding: 0.5rem;
       border: none;
@@ -79,9 +79,18 @@
       transition: background-color 0.3s;
     }
 
-    input:focus {
+    input:focus, select:focus {
       background-color: #3a3a3a;
       outline: none;
+    }
+
+    .height-group {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .height-group input {
+      flex: 1;
     }
 
     button {
@@ -138,20 +147,36 @@
   <div class="container">
     <h1>Food End Calculator</h1>
     <div class="input-group">
-      <label for="weight">Your Weight (kg):</label>
-      <input type="number" id="weight" placeholder="e.g., 70">
+      <label for="weight">Your Weight (lb):</label>
+      <input type="number" id="weight" placeholder="e.g., 154">
     </div>
     <div class="input-group">
-      <label for="height">Your Height (cm):</label>
-      <input type="number" id="height" placeholder="e.g., 175">
+      <label>Your Height:</label>
+      <div class="height-group">
+        <input type="number" id="height-ft" placeholder="ft">
+        <input type="number" id="height-in" placeholder="in">
+      </div>
     </div>
     <div class="input-group">
       <label for="age">Your Age:</label>
       <input type="number" id="age" placeholder="e.g., 25">
     </div>
     <div class="input-group">
-      <label for="food">Favorite Food (e.g., Pizza):</label>
-      <input type="text" id="food" placeholder="e.g., Pizza">
+      <label for="food">Favorite Food:</label>
+      <select id="food">
+        <option value="">-- Select a Food --</option>
+        <option value="Pizza">Pizza</option>
+        <option value="Burger">Burger</option>
+        <option value="Sushi">Sushi</option>
+        <option value="Ice Cream">Ice Cream</option>
+        <option value="Tacos">Tacos</option>
+        <option value="Pasta">Pasta</option>
+        <option value="Salad">Salad</option>
+        <option value="Steak">Steak</option>
+        <option value="Donuts">Donuts</option>
+        <option value="Chocolate">Chocolate</option>
+        <!-- Add more foods as desired -->
+      </select>
     </div>
     <button onclick="calculate()">Calculate</button>
     <div class="result" id="result"></div>
@@ -160,17 +185,21 @@
   <script>
     function calculate() {
       const weight = parseFloat(document.getElementById('weight').value);
-      const height = parseFloat(document.getElementById('height').value);
+      const heightFt = parseFloat(document.getElementById('height-ft').value);
+      const heightIn = parseFloat(document.getElementById('height-in').value);
       const age = parseInt(document.getElementById('age').value);
-      const food = document.getElementById('food').value.trim();
+      const food = document.getElementById('food').value;
 
-      if (isNaN(weight) || isNaN(height) || isNaN(age) || food === "") {
+      if (isNaN(weight) || isNaN(heightFt) || isNaN(heightIn) || isNaN(age) || food === "") {
         document.getElementById('result').innerText = "Please fill in all fields correctly.";
         return;
       }
 
+      // Convert height to inches for calculation
+      const totalHeightIn = (heightFt * 12) + heightIn;
+
       // Humorous calculation formula
-      const baseAmount = (weight * height) / age;
+      const baseAmount = (weight * totalHeightIn) / age;
       const randomFactor = Math.floor(Math.random() * 1000) + 100; // Random number between 100 and 1100
       const total = Math.floor(baseAmount * randomFactor / 1000);
 
